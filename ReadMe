@@ -1,0 +1,22 @@
+Sélectionner les miroirs les plus proches puis lancer le script archsplatts-mint
+
+# --- Discord --- #
+
+discord (.deb https://discord.com)
+
+# --- Lact --- #
+
+https://github.com/ilya-zlobintsev/LACT/releases/ (.deb ubuntu 26.04)
+
+systemctl enable --now lactd.service
+
+# --- Proton GE --- #
+
+https://github.com/GloriousEggroll/proton-ge-custom/releases
+
+(à placer dans .local/share/Steam/compatibilitytools.d)
+
+# --- starship --- #
+
+curl -sS https://starship.rs/install.sh | sh
+

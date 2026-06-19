@@ -1,0 +1,23 @@
+󰚰  Mettre à jour le système		sudo apt update && apt upgrade
+
+  Rechercher un paquet		apt search <nom>
+
+  Installer un paquet			sudo apt install <nom>
+
+󱧖  Supprimer un paquet			sudo apt remove <nom>
+								sudo apt purge <nom>
+
+  Info paquet installé			dpkg -s <nom>
+
+  Info paquet dépôts			apt show <nom>
+
+󰃢  Nettoyer le cache			sudo apt autoclean
+								sudo apt clean
+
+  Lister les paquets			dpkg --list
+								apt list --installed
+
+󱧖  Supprimer les paquets		sudo apt autoremove
+orphelins
+
+-y = Pas de confirmation 									
