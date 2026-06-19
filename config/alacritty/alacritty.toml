@@ -12,5 +12,4 @@ size = 15.0
 [window]
 padding.x = 14
 padding.y = 14
-decorations = "None"
 opacity = 0.9
