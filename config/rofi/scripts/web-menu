@@ -16,7 +16,7 @@ if [[ -n "$selection" ]]; then
    		"BraveSearch")
    		   	 brave-origin https://search.brave.com 
    		   	 ;;  
-   		"DocsFedora")
+   		"DocsMint")
    			brave-origin https://www.linuxmint.com/documentation.php
    			;;   
   		"Korben")
