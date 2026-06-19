@@ -1,0 +1,158 @@
+#!/bin/bash
+
+set -e
+
+# Définition des couleurs
+VERT='\033[0;32m'
+ROUGE='\033[0;31m'
+JAUNE='\033[1;33m'
+BLEU='\033[0;34m'
+NC='\033[0m'
+
+# Vérification des droits root
+if [ "$EUID" -ne 0 ]; then 
+  echo -e "${ROUGE}Veuillez lancer ce script avec sudo ou en root.${NC}"
+  exit 1
+fi   
+
+USER="$SUDO_USER"
+
+echo -e "${VERT}                                   ▄▄                    ${NC}"
+echo -e "${VERT}                  █▄                ██       █▄  █▄      ${NC}"
+echo -e "${VERT}       ▄          ██                ██      ▄██▄▄██▄     ${NC}"
+echo -e "${VERT} ▄▀▀█▄ ████▄▄███▀ ████▄ ▄██▀█ ████▄ ██ ▄▀▀█▄ ██  ██ ▄██▀█${NC}"
+echo -e "${VERT} ▄█▀██ ██   ██    ██ ██ ▀███▄ ██ ██ ██ ▄█▀██ ██  ██ ▀███▄${NC}"
+echo -e "${VERT}▄▀█▄██▄█▀  ▄▀███▄▄██ ███▄▄██▀▄████▀▄██▄▀█▄██▄██ ▄███▄▄██▀${NC}"
+echo -e "${VERT}                              ██                         ${NC}"
+echo -e "${VERT}                              ▀                          ${NC}"
+
+echo -e "${JAUNE}Bienvenue dans le script de configuration Archsplatts pour Linux Mint!${NC}\n"
+
+if [ -t 0 ]; then
+    read -p "Appuyez sur Entrée pour continuer... "
+fi   
+
+echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+echo -e "${JAUNE}[1/7] Mise à jour de Linux Mint${NC}"
+echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
+
+if apt update && apt upgrade -y; then
+    echo -e "${VERT}✓ Mise à jour terminée avec succès.${NC}\n"
+else
+    echo -e "${ROUGE}✗ Échec de la mise à jour.${NC}"
+    exit 1
+fi
+
+echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+echo -e "${JAUNE}[2/7] Ajout du support 32 bits${NC}"
+echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
+
+if dpkg --add-architecture i386 && apt update -y; then
+    echo -e "${VERT}✓ Ajout du support 32 bits terminé avec succès.${NC}\n"
+else
+    echo -e "${ROUGE}✗ Échec de l'ajout du support 32 bits.${NC}"
+    exit 1
+fi
+
+echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+echo -e "${JAUNE}[3/7] Installation des pilotes vulkan${NC}"
+echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
+
+PAQUETS_VULKAN=(
+	 "mesa-vulkan-drivers" 
+	 "mesa-vulkan-drivers:i386"		
+)
+
+if apt install -y "${PAQUETS_VULKAN[@]}"; then
+    echo -e "${VERT}✓ Pilotes vulkan installés avec succès.${NC}\n"
+else
+    echo -e "${ROUGE}✗ Échec de l'installation des pilotes vulkan.${NC}"
+    exit 1
+fi
+
+echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+echo -e "${JAUNE}[4/7] Installation des applications${NC}"
+echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
+
+PAQUETS_APPS=(
+	"audacity"
+	"bat"
+	"btop"
+	"chromium"
+	"foot"
+	"gamemode"
+	"gammastep"
+	"geany"
+	"gimp"
+	"git"
+	"impression"
+	"mangohud"
+	"micro"
+	"rofi"
+	"starship"
+	"steam"
+	"timeshift"
+	"trash-cli"
+	"zsh"
+	"zsh-autosuggestions"
+	"zsh-syntax-highlighting"
+)
+
+if apt install -y "${PAQUETS_APPS[@]}"; then
+    echo -e "${VERT}✓ Applications installées avec succès.${NC}\n"
+else
+    echo -e "${ROUGE}✗ Échec de l'installation des applications.${NC}"
+    exit 1
+fi
+
+echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+echo -e "${JAUNE}[5/7] Activation du pare-feu UFW${NC}"
+echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
+
+# Vérifier si UFW est installé
+if ! command -v ufw &> /dev/null; then
+    echo "UFW n'est pas installé. Installation en cours..."
+    apt-get update
+    apt-get install -y ufw
+fi
+
+# Activer UFW
+ufw --force enable
+
+echo ""
+echo "Statut du pare-feu :"
+ufw status
+
+echo -e "${VERT}✓ Pare-feu UFW activé avec succès !${NC}\n"
+
+echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+echo -e "${JAUNE}[6/7] Configuration du shell Zsh${NC}"
+echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
+
+if getent passwd "$USER" | grep -q "/bin/zsh$"; then
+    echo -e "${VERT}✓ Le shell est déjà Zsh pour $USER.${NC}\n"
+else
+    echo "Changement du shell vers Zsh..."
+    if chsh -s /bin/zsh "$USER"; then
+        echo -e "${VERT}✓ Shell changé en Zsh avec succès.${NC}\n"
+    else
+        echo -e "${ROUGE}✗ Erreur lors du changement du shell.${NC}\n"
+    fi
+fi
+
+echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+echo -e "${JAUNE}[7/7] Nettoyage du système${NC}"
+echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
+
+apt autoremove -y
+apt autoclean -y
+apt clean -y
+
+echo -e "${VERT}✓ Nettoyage terminé.${NC}\n"
+
+# Résumé final
+echo -e "${VERT}╔════════════════════════════════════════╗${NC}"
+echo -e "${VERT}║  Installation terminée avec succès !   ║${NC}"
+echo -e "${VERT}╚════════════════════════════════════════╝${NC}\n"
+
+echo -e "${JAUNE}⚠ Veuillez redémarrer votre système pour appliquer tous les changements.${NC}"
