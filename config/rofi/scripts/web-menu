@@ -1,7 +1,7 @@
 #!/bin/bash
 
 options="BraveSearch\0icon\x1fbrave
-DocsFedora\0icon\x1fdistributor-logo-fedora
+DocsMint\0icon\x1fdistributor-logo-linux-mint
 Korben\0icon\x1fdistributor-logo-calculate-linux
 ManjaroForum\0icon\x1fmanjaro
 Movix\0icon\x1fcom.github.artemanufrij.playmyvideos
@@ -17,7 +17,7 @@ if [[ -n "$selection" ]]; then
    		   	 brave-origin https://search.brave.com 
    		   	 ;;  
    		"DocsFedora")
-   			brave-origin https://docs.fedoraproject.org/fr/docs/
+   			brave-origin https://www.linuxmint.com/documentation.php
    			;;   
   		"Korben")
   			brave-origin https://korben.info
