@@ -1,22 +1,12 @@
 # --- Config Linux Mint Gaming (GPU AMD) --- #
 Sélectionner les miroirs les plus proches puis lancer le script archsplatts-mint
 
-# --- Copie des dotfiles --- #
-cd mint-config
-cp -r config/* ~/.config 
-mkdir ~/.scripts
-cp -r appearance/* ~/.scripts/
-chmod u+x ~/.scripts/papirus-folders
-cp zshrc ~/.zshrc
-
 # --- Discord --- #
 discord (.deb https://discord.com)
 
 # --- Lact --- #
 https://github.com/ilya-zlobintsev/LACT/releases/ (.deb ubuntu 26.04)
-
 systemctl enable --now lactd.service
-
 Importer les profils depuis le dossier lact_profiles
 
 # --- Nerd Fonts --- #
@@ -24,16 +14,6 @@ Télécharger les polices Ubuntu Mono Nerd Font & Ubuntu Nerd Font
 https://www.nerdfonts.com/font-downloads
 (à copier dans ~/.local/share/fonts)
 
-# --- Papirus Folders --- #
-git clone https://github.com/catppuccin/papirus-folders.git
-cd papirus-folders
-
-sudo cp -r src/* /usr/share/icons/Papirus  
-
 # --- Proton GE --- #
 https://github.com/GloriousEggroll/proton-ge-custom/releases
-
 (à placer dans .local/share/Steam/compatibilitytools.d)
-
-# --- starship --- #
-curl -sS https://starship.rs/install.sh | sh
