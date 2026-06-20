@@ -3,10 +3,10 @@
 options="BraveSearch\0icon\x1fbrave
 DocsMint\0icon\x1fdistributor-logo-linux-mint
 Korben\0icon\x1fdistributor-logo-calculate-linux
-ManjaroForum\0icon\x1fmanjaro
+Maps\0icon\x1fmaps
 Movix\0icon\x1fcom.github.artemanufrij.playmyvideos
 ProtonDB\0icon\x1fdistributor-logo-steamos
-Twitch\0icon\x1ftwitch-indicator
+UbuntuWiki\0icon\x1fdistributor-logo-ubuntu
 Youtube\0icon\x1fyoutube"
 
 selection=$(echo -e "$options" | rofi -dmenu -show-icons -icon-theme "Papirus" -config ~/.config/rofi/web-menu.rasi)
@@ -22,8 +22,8 @@ if [[ -n "$selection" ]]; then
   		"Korben")
   			firefox https://korben.info
   			;;          
-		"ManjaroForum")
-			firefox https://forum.manjaro.org/c/announcements/11
+		"Maps")
+			firefox https://www.google.fr/maps
 			;;
 		"Movix")
 			firefox https://movix.bet
@@ -31,8 +31,8 @@ if [[ -n "$selection" ]]; then
         "ProtonDB")
             firefox https://www.protondb.com
             ;;
-		"Twitch")
-			firefox https://www.twitch.tv/directory
+		"UbuntuWiki")
+			firefox https://doc.ubuntu-fr.org
             ;;
         "Youtube")                    
             firefox https://www.youtube.com
