@@ -33,7 +33,7 @@ if [ -t 0 ]; then
 fi   
 
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "${JAUNE}[1/7] Mise à jour de Linux Mint${NC}"
+echo -e "${JAUNE}[1/10] Mise à jour de Linux Mint${NC}"
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
 
 if apt update && apt upgrade -y; then
@@ -44,7 +44,7 @@ else
 fi
 
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "${JAUNE}[2/7] Ajout du support 32 bits${NC}"
+echo -e "${JAUNE}[2/10] Ajout du support 32 bits${NC}"
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
 
 if dpkg --add-architecture i386 && apt update -y; then
@@ -55,7 +55,7 @@ else
 fi
 
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "${JAUNE}[3/7] Installation des pilotes vulkan${NC}"
+echo -e "${JAUNE}[3/10] Installation des pilotes vulkan${NC}"
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
 
 PAQUETS_VULKAN=(
@@ -71,11 +71,11 @@ else
 fi
 
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "${JAUNE}[4/7] Installation des applications${NC}"
+echo -e "${JAUNE}[4/10] Installation des applications${NC}"
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
 
 PAQUETS_APPS=(
-	"alacritty"	
+	"alacritty"
 	"audacity"
 	"bat"
 	"btop"
@@ -104,7 +104,7 @@ else
 fi
 
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "${JAUNE}[5/7] Activation du pare-feu UFW${NC}"
+echo -e "${JAUNE}[5/10] Activation du pare-feu UFW${NC}"
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
 
 # Vérifier si UFW est installé
@@ -124,7 +124,7 @@ ufw status
 echo -e "${VERT}✓ Pare-feu UFW activé avec succès !${NC}\n"
 
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "${JAUNE}[6/7] Configuration du shell Zsh${NC}"
+echo -e "${JAUNE}[6/10] Configuration du shell Zsh${NC}"
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
 
 if getent passwd "$USER" | grep -q "/bin/zsh$"; then
@@ -139,7 +139,58 @@ else
 fi
 
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "${JAUNE}[7/7] Nettoyage du système${NC}"
+echo -e "${JAUNE}[7/10] Copie des Dotfiles${NC}"
+echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
+
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+cd "$SCRIPT_DIR"
+
+if [ ! -d "config" ] || [ ! -d "appearance" ] || [ ! -f "zshrc" ]; then
+    echo -e "${ROUGE}✗ Fichiers de configuration manquants dans $SCRIPT_DIR${NC}"
+    exit 1
+fi
+
+cp -r config/* ~/.config
+mkdir -p ~/.scripts  
+cp -r appearance/* ~/.scripts/
+chmod u+x ~/.scripts/papirus-folders
+cp zshrc ~/.zshrc
+
+echo -e "${VERT}Dotfiles copiés avec succès !${NC}"
+
+echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+echo -e "${JAUNE}[8/10] Catppuccin Papirus-folders${NC}"
+echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
+
+TEMP_DIR=$(mktemp -d)
+trap "rm -rf $TEMP_DIR" EXIT
+
+if git clone https://github.com/catppuccin/papirus-folders.git "$TEMP_DIR/papirus"; then
+    if sudo cp -r "$TEMP_DIR/papirus/src"/* /usr/share/icons/Papirus; then
+        echo -e "${VERT}✓ Icones Papirus Catppuccin copiées avec succès !${NC}\n"
+    else
+        echo -e "${ROUGE}✗ Échec de la copie des icones.${NC}"
+        exit 1
+    fi
+else
+    echo -e "${ROUGE}✗ Échec du clonage de papirus-folders.${NC}"
+    exit 1
+fi
+
+echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+echo -e "${JAUNE}[9/10] Installation de starship${NC}"
+echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
+
+if curl -sS https://starship.rs/install.sh | sh; then
+    echo -e "${VERT}✓ Starship installé avec succès.${NC}\n"
+else
+    echo -e "${ROUGE}✗ Échec de l'installation de starship.${NC}"
+    exit 1
+fi
+
+echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+echo -e "${JAUNE}[10/10] Nettoyage du système${NC}"
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
 
 apt autoremove -y
@@ -148,7 +199,6 @@ apt clean -y
 
 echo -e "${VERT}✓ Nettoyage terminé.${NC}\n"
 
-# Résumé final
 echo -e "${VERT}╔════════════════════════════════════════╗${NC}"
 echo -e "${VERT}║  Installation terminée avec succès !   ║${NC}"
 echo -e "${VERT}╚════════════════════════════════════════╝${NC}\n"
