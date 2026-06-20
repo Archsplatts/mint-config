@@ -4,6 +4,14 @@ Sélectionner les miroirs les plus proches puis lancer le script archsplatts-min
 # --- Discord --- #
 discord (.deb https://discord.com)
 
+# --- Copie des Dotfiles --- #
+cd ~/mint-config
+cp -r config/* ~/.config
+mkdir -p ~/.scripts  
+cp -r appearance/* ~/.scripts/
+chmod u+x ~/.scripts/papirus-folders
+cp zshrc ~/.zshrc
+
 # --- Lact --- #
 https://github.com/ilya-zlobintsev/LACT/releases/ (.deb ubuntu 26.04)
 systemctl enable --now lactd.service
