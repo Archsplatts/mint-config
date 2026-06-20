@@ -2,6 +2,7 @@ export BAT_THEME="Catppuccin Mocha"
 export EDITOR="micro"
 export MICRO_TRUECOLOR=1
 
+alias bat="batcat"
 alias c="clear"
 alias cdt="cd ~/Téléchargements"
 alias nf="neofetch"
