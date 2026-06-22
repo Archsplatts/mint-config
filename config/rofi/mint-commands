@@ -1,23 +1,22 @@
-󰚰  Mettre à jour le système		sudo apt update && apt upgrade
+	--- Mise à jour ---
+			
+󰚰  sudo apt update && apt upgrade
 
-  Rechercher un paquet		apt search <nom>
+	--- Paquets ---
+			
+  apt search <nom>
+  sudo apt install <nom>
 
-  Installer un paquet			sudo apt install <nom>
+󱧖  sudo apt remove <nom>
+   sudo apt purge <nom>
 
-󱧖  Supprimer un paquet			sudo apt remove <nom>
-								sudo apt purge <nom>
+  dpkg -s <nom> (paquet installé)
+   apt show <nom> (paquet dépôts)
 
-  Info paquet installé			dpkg -s <nom>
+	--- Nettoyage ---
+			
+󰃢  sudo apt autoclean
+   sudo apt clean
 
-  Info paquet dépôts			apt show <nom>
-
-󰃢  Nettoyer le cache			sudo apt autoclean
-								sudo apt clean
-
-  Lister les paquets			dpkg --list
-								apt list --installed
-
-󱧖  Supprimer les paquets		sudo apt autoremove
-orphelins
-
--y = Pas de confirmation 									
+󱧖  sudo apt autoremove
+		
