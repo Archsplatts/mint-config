@@ -1,7 +1,7 @@
 @import "themes/catppuccin-default"
 
 configuration {
-    font: "Ubuntu Nerd Font 13";
+    font: "UbuntuMonoNerd Font 15";
 }
 
 window {
@@ -10,7 +10,7 @@ window {
 	border:           	2px;
 	border-color:		@blue;
 	border-radius:	  	18;	    
-    width:            	600px;        
+    width:            	20%;        
 }
 
 mainbox {
@@ -20,7 +20,7 @@ mainbox {
 listview {
 	border: 	0; 
 	columns:  	1;
-    lines:    	23;
+    lines:    	21;
  	padding:  	2px 0px 0px;
 	scrollbar:	false;
     spacing:  	6px;    
