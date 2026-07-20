@@ -1,18 +1,18 @@
 @import "themes/catppuccin-default"
 
 configuration {
-    font: "Ubuntu Nerd Font 15";  
+    font: "Ubuntu Nerd Font 14";  
 }
 
 window {
 	modi: 				"drun";
 	show-icons: 		true;
-	border:				2px;
-	border-color:		@blue;
+	border:				3px;
+	border-color:		@green;
 	icon-theme: 		"Papirus";
-	background-color:  	rgba(36,39,58,0.90);
+	background-color:  	rgba(30,30,46,0.95);
 	transparency:		"real";
-	border-radius:	  	14;
+	border-radius:	  	8px;
     padding:          	14;
     width:            	25%; 
 }
@@ -61,7 +61,7 @@ element alternate normal {
 element selected normal, element selected active {  
 	background-color: 	inherit;
     border-radius: 		8px;    
-    text-color:        	@blue;
+    text-color:        	@green;
 }
 
 element-text {
