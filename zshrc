@@ -5,7 +5,7 @@ export MICRO_TRUECOLOR=1
 # APT
 alias clean="sudo apt clean && apt autoremove"
 alias install="sudo apt install"
-alias list=apt list --installed"
+alias list="apt list --installed"
 alias orphans="sudo apt autoremove"
 alias purge="sudo apt purge"
 alias remove="sudo apt remove"
