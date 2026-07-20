@@ -22,10 +22,10 @@ configuration {
 }
 
 window {
-	background-color:  	rgba(36,39,58,0.90);
-	border:           	2px;
-	border-color:		@blue;
-    border-radius:  	14px;
+	background-color:  	rgba(30,30,46,0.95);
+	border:           	3px;
+	border-color:		@green;
+    border-radius:  	8px;
 	padding:          	14px;
 	transparency:		"real";
     width:          	450;  
@@ -37,9 +37,7 @@ mainbox {
 
 inputbar {
     background-color:  	@surface0;
-    border-radius:  	12px;
-    border: 0px 0px 2px 0px;
-    border-color: 		@blue;
+    border-radius:  	8px;
 	children:   		[ prompt, entry ];
 	padding:    		8px 16px;
     spacing:    		8px;   
