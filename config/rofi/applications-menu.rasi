@@ -85,7 +85,7 @@ element {
 
 element selected normal, element selected active {
 	background-color:	inherit;
-    text-color:			@blue;
+    text-color:			@green;
 }
 
 element-icon {
