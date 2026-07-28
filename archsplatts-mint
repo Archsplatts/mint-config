@@ -71,7 +71,7 @@ mkdir -p ~/.scripts
 mkdir -p ~/Images/Wallpapers
 git clone https://github.com/Archsplatts/mint-config
 cd ~/mint-config
-cp -r zshrc ~/.zshrc
+cp zshrc ~/.zshrc
 cp -r config/* ~/.config
 cp -r appearance/* ~/.scripts
 cp -r nature-valley-2.jpg ~/Images/Wallpapers/nature-valley-2.jpg
