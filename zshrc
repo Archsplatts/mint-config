@@ -2,22 +2,22 @@ export BAT_THEME="Catppuccin Mocha"
 export EDITOR="micro"
 export MICRO_TRUECOLOR=1
 
-# APT
-alias clean="sudo apt clean && apt autoremove"
-alias install="sudo apt install"
-alias list="apt list --installed"
-alias orphans="sudo apt autoremove"
-alias purge="sudo apt purge"
-alias remove="sudo apt remove"
-alias search="apt search"
-alias show="apt show"
-alias update="sudo apt update && apt upgrade"
+# Nala
+alias add="sudo nala install"
+alias clean="sudo nala clean"
+alias list="nala list --installed > list"
+alias orphans="sudo nala autoremove"
+alias purge="sudo nala purge"
+alias remove="sudo nala remove"
+alias search="nala search"
+alias show="nala show"
+alias update="sudo nala update && sudo nala upgrade"
 
 # Utilitaires
 alias bat="batcat"
 alias c="clear"
 alias cdt="cd ~/Téléchargements"
-alias nf="neofetch"
+alias ff="fastfetch"
 alias pfc="~/.scripts/papirus-folders -C"
 alias pfl="~/.scripts/papirus-folders -l"
 alias zshrc="micro .zshrc && source .zshrc"
