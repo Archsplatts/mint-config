@@ -76,7 +76,6 @@ UTILITIES_PACKAGES=(
     "git"
     "gnome-disk-utility"
     "lollypop"
-    "lxqt-policykit"
     "micro"
     "mpv"
     "nwg-look"
