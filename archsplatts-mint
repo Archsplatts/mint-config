@@ -44,7 +44,7 @@ SWAY_PACKAGES=(
     "swayidle"
     "swaylock"
     "waybar"
-    "mako"
+    "mako-notifier"
     "grim"
     "slurp"
     "autotiling"
