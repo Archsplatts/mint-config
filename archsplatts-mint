@@ -22,42 +22,20 @@ if [ -t 0 ]; then
 fi   
 
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "${JAUNE}[1/8] Mise à jour du système${NC}"
+echo -e "${JAUNE}[1/7] Mise à jour du système${NC}"
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
 
 sudo apt update
 sudo apt upgrade -y
 
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "${JAUNE}[2/8] Installation de nala${NC}"
+echo -e "${JAUNE}[2/7] Installation de nala${NC}"
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
 
 sudo apt install -y nala
 
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "${JAUNE}[3/8] Installation de sway${NC}"
-echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
-
-SWAY_PACKAGES=(
-    "sway"
-    "swaybg"
-    "swayidle"
-    "swaylock"
-    "waybar"
-    "mako-notifier"
-    "grim"
-    "slurp"
-    "autotiling"
-    "gammastep"
-    "xdg-desktop-portal-gtk"
-    "xdg-desktop-portal-wlr"
-    "xwayland"
-)
-
-sudo nala install -y "${SWAY_PACKAGES[@]}"
-
-echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "${JAUNE}[4/8] Installation des utilitaires${NC}"
+echo -e "${JAUNE}[3/7] Installation des utilitaires${NC}"
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
 
 UTILITIES_PACKAGES=(
@@ -65,57 +43,30 @@ UTILITIES_PACKAGES=(
     "bat"
     "btop"
     "calcurse"
-    "cliphist"
     "du-dust"
     "eza"
     "fastfetch"
-    "flameshot"
-    "foot"
-    "galculator"
-    "geany"
-    "git"
-    "gnome-disk-utility"
     "lollypop"
     "micro"
-    "mpv"
-    "nwg-look"
-    "papirus-icon-theme"
-    "pavucontrol"
-    "qbittorrent"
-    "rhythmbox"
-    "ristretto"
     "rofi"
     "starship"
-    "thunar"
-    "thunar-archive-plugin"
-    "thunar-volman"
-    "thunderbird"
     "timeshift"
     "trash-cli"
-    "ufw"
-    "unzip"
-    "wev"
-    "wl-clipboard"
-    "xarchiver"
-    "zathura"
-    "zathura-pdf-poppler"
-    "zip"
 )
 
 sudo nala install -y "${UTILITIES_PACKAGES[@]}"
 
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "${JAUNE}[5/8] Configuration du shell zsh${NC}"
+echo -e "${JAUNE}[4/7] Configuration du shell zsh${NC}"
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
 
 sudo nala install -y zsh zsh-autosuggestions zsh-syntax-highlighting
 chsh -s /bin/zsh
 
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "${JAUNE}[6/8] Copie des dotfiles${NC}"
+echo -e "${JAUNE}[5/7] Copie des dotfiles${NC}"
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
 
-mkdir -p ~/.config
 mkdir -p ~/.scripts
 mkdir -p ~/Images/Wallpapers
 git clone https://github.com/Archsplatts/mint-config
@@ -126,14 +77,14 @@ cp -r nature-valley-2.jpg ~/Images/Wallpapers/nature-valley-2.jpg
 chmod u+x ~/.scripts/papirus-folders
 
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "${JAUNE}[7/8] Activation du pare-feu${NC}"
+echo -e "${JAUNE}[6/7] Activation du pare-feu${NC}"
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
 
 sudo ufw enable
 sudo systemctl enable ufw
 
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "${JAUNE}[8/8] Installation de catppuccin papirus${NC}"
+echo -e "${JAUNE}[7/7] Installation de catppuccin papirus${NC}"
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
 
 git clone https://github.com/catppuccin/papirus-folders.git
