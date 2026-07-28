@@ -1,15 +1,15 @@
 # --- Variables --- #
 
 set $mod Mod4
-set $term foot
+set $term alacritty
 set $menu rofi -modes "drun,run" -show drun -config ~/.config/rofi/applications-menu.rasi
-set $filemanager thunar
+set $filemanager nemo
 set $web firefox
-set $texteditor geany
+set $texteditor alacritty -e micro
 
 # --- Output configuration --- #
 
-output HDMI-A-1 resolution 1920x1080 position 0,0
+output Virtual-1 resolution 1920x1080 position 0,0
 output * bg ~/Images/Wallpapers/nature-valley-2.jpg fill
 
 # --- Input configuration --- #
