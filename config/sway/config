@@ -10,7 +10,7 @@ set $texteditor geany
 # --- Output configuration --- #
 
 output HDMI-A-1 resolution 1920x1080 position 0,0
-output * bg ~/Images/Wallpapers/crane.png fill
+output * bg ~/Images/Wallpapers/nature-valley-2.jpg fill
 
 # --- Input configuration --- #
 
