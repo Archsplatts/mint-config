@@ -5,7 +5,7 @@ export MICRO_TRUECOLOR=1
 # Nala
 alias add="sudo nala install"
 alias clean="sudo nala clean"
-alias list="nala list --installed > list"
+alias list="nala list --installed > $HOME/Info/list"
 alias orphans="sudo nala autoremove"
 alias purge="sudo nala purge"
 alias remove="sudo nala remove"
@@ -16,20 +16,20 @@ alias update="sudo nala update && sudo nala upgrade"
 # Utilitaires
 alias bat="batcat"
 alias c="clear"
-alias cdt="cd ~/Téléchargements"
+alias cdt="cd $HOME/Téléchargements"
 alias ff="fastfetch"
-alias pfc="~/.scripts/papirus-folders -C"
-alias pfl="~/.scripts/papirus-folders -l"
-alias zshrc="micro .zshrc && source .zshrc"
+alias pfc="$HOME/.scripts/papirus-folders -C"
+alias pfl="$HOME/.scripts/papirus-folders -l"
+alias zshrc="micro $HOME/.zshrc && source $HOME/.zshrc"
 
 # --- Historique zsh --- #
-HISTFILE=~/.zsh_history
+HISTFILE=$HOME/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 
 bindkey '^[[3~' delete-char
 
-zstyle :compinstall filename '~/.zshrc'
+zstyle :compinstall filename '$HOME/.zshrc'
 
 autoload -Uz compinit
 compinit
