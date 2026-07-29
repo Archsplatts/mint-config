@@ -67,15 +67,16 @@ echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━
 echo -e "${JAUNE}[5/7] Copie des dotfiles${NC}"
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
 
-mkdir -p ~/.scripts
-mkdir -p ~/Images/Wallpapers
+mkdir -p $HOME/.scripts
+mkdir -p $HOME/Images/Wallpapers
 git clone https://github.com/Archsplatts/mint-config
-cd ~/mint-config
-cp zshrc ~/.zshrc
-cp -r config/* ~/.config
-cp -r appearance/* ~/.scripts
-cp -r nature-valley-2.jpg ~/Images/Wallpapers/nature-valley-2.jpg
-chmod u+x ~/.scripts/papirus-folders
+cd $HOME/mint-config
+cp zshrc $HOME/.zshrc
+cp -r config/* $HOME/.config
+cp -r appearance/* $HOME/.scripts
+cp -r nature-valley-2.jpg $HOME/Images/Wallpapers/nature-valley-2.jpg
+chmod u+x $HOME/.scripts/papirus-folders
+chmod u+x $HOME/.config/rofi/scripts/*
 
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
 echo -e "${JAUNE}[6/7] Activation du pare-feu${NC}"
@@ -91,7 +92,7 @@ echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━
 git clone https://github.com/catppuccin/papirus-folders.git
 cd papirus-folders
 sudo cp -r src/* /usr/share/icons/Papirus  
-~/.scripts/papirus-folders -C cat-mocha-green
+$HOME/.scripts/papirus-folders -C cat-mocha-green
 
 echo -e "${VERT}╔════════════════════════════════════════╗${NC}"
 echo -e "${VERT}║  Installation terminée avec succès !   ║${NC}"
