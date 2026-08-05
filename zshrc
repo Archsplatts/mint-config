@@ -3,12 +3,12 @@ export EDITOR="micro"
 export MICRO_TRUECOLOR=1
 
 # Nala
-alias add="sudo nala install"
+alias add="sudo nala install -y"
 alias clean="sudo nala clean"
+alias del="sudo nala remove"
 alias list="nala list --installed > $HOME/Info/list"
 alias orphans="sudo nala autoremove"
 alias purge="sudo nala purge"
-alias remove="sudo nala remove"
 alias search="nala search"
 alias show="nala show"
 alias update="sudo nala update && sudo nala upgrade"
@@ -23,7 +23,7 @@ alias pfl="$HOME/.scripts/papirus-folders -l"
 alias zshrc="micro $HOME/.zshrc && source $HOME/.zshrc"
 
 # --- Historique zsh --- #
-HISTFILE=$HOME/.zsh_history
+HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 
